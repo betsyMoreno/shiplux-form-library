@@ -19,62 +19,72 @@ const renderForm = (id, formProps) => {
   };
 
   root.innerHTML = `
-    <div class="bg-[red]">
-      ${formProps.steps.map(
-        (stepForm, index) => `
-      <section
-      id={step-${id}-${index + 1}}
-      class={${componentsStyles.width} ${componentsStyles.height} ${
-          componentsStyles.formBg
-        } ${componentsStyles.formColor} ${
-          index !== 0 && "d-none"
-        } ${id}-form-step form-step}
-      key={form-${index}}
-    >
-      <div class="d-flex justify-between items-center">
-        <h2 class="font-normal">
-          Instant Shipping Quote <br /> Calculator
-        </h2>
-        <span class="form-stepper-circle">
-          <span>
-            {index + 1} / {formProps.steps.length}
-          </span>
-        </span>
-      </div>
-      {/* Mapping form inputs */}
-      <div class={${componentsStyles?.sectionHeight} mt-3}>
-      ${stepForm.map(
-        (input, index) => `
-        <div key={"${input.name}-${index}"}>
-        <label>{input.field}</label>
-        <input
-          class={"${componentsStyles.placeholcerColor}"}
-          placeholder={input.placeholder}
-          name={input.name}
-          {...input.validations}
-        />
-        </div>
-        `
-      )}
-      </div>
-      <div className="mt-3">
-        <div className="d-flex justify-end">
-          <button
-            class={"${componentsStyles.buttonBg} ${
-          componentsStyles.buttonColor
-        } button btn-navigate-form-step"}
-            type="button"
-            step_number={index + 1}
-            onClick={(e) => window.onFormNext(e, id)}
-          >
-            Next
-          </button>
-        </div>
-      </div>
-    </section>
-      `
-      )}
-    </div>
+   <div>
+        <div id="multi-step-form-container">
+            <form
+                id="userAccountSetupForm"
+                name="userAccountSetupForm"
+                encType="multipart/form-data"
+            >
+                ${formProps.steps.map(
+                  (stepForm, index) => `
+                    <section
+                        id={step-${id}-${index + 1}}
+                        className={${componentsStyles.width} ${
+                    componentsStyles.height
+                  } ${componentsStyles.formBg} ${componentsStyles.formColor} ${
+                    index !== 0 && "d-none"
+                  } ${id}-form-step form-step}
+                        key={form-${index}}
+                    >
+                        <div className="d-flex justify-between items-center">
+                            <h2 className="font-normal">
+                              Instant Shipping Quote <br /> Calculator
+                            </h2>
+                            <span className="form-stepper-circle">
+                              <span>
+                                ${index + 1} / ${formProps.steps.length}
+                              </span>
+                            </span>
+                        </div>
+                        <div className={${
+                          componentsStyles?.sectionHeight
+                        } mt-3}>
+                            ${stepForm.map(
+                              (input, index) => `
+                                <div key={${input.name}-${index}}>
+                                    <label>${input.field}</label>
+                                    <input
+                                      className={${
+                                        componentsStyles.placeholcerColor
+                                      }}
+                                      placeholder={${input.placeholder}}
+                                      name={${input.name}}
+                                      {${{ ...input.validations }}}
+                                    />
+                                </div>
+                            `
+                            )}
+                        </div>
+                        <div className="mt-3">
+                            <div className="d-flex justify-end">
+                                <button
+                                    className={${componentsStyles.buttonBg} ${
+                    componentsStyles.buttonColor
+                  } button btn-navigate-form-step}
+                                    type="button"
+                                    step_number={${index + 1}}
+                                >
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                `
+                )}
+            </form>
+        </div
+   </div>
   `;
 };
 export default {
