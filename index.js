@@ -74,7 +74,7 @@ const renderForm = (id, formProps) => {
                   } button btn-navigate-form-step}
                                     type="button"
                                     step_number={${index + 1}}
-                                    onClick={(e) => ${onFormNext(e, id)}}
+                                    onClick={${(e) => onFormNext(e, id)}}
 
                                 >
                                     Next
