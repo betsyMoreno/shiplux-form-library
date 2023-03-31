@@ -1,0 +1,15 @@
+{
+  "name": "shiplux-form-library",
+  "version": "1.0.0",
+  "description": "Library to create a shiplux form faster ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "shiplux",
+    "form"
+  ],
+  "author": "betsy moreno",
+  "license": "ISC"
+}
