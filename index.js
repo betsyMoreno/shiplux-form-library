@@ -29,52 +29,50 @@ const renderForm = (id, formProps) => {
                 ${formProps.steps.map(
                   (stepForm, index) => `
                     <section
-                        id={step-${id}-${index + 1}}
-                        className={${componentsStyles.width} ${
+                        id="step-${id}-${index + 1}"
+                        class="${componentsStyles.width} ${
                     componentsStyles.height
                   } ${componentsStyles.formBg} ${componentsStyles.formColor} ${
                     index !== 0 && "hidden"
-                  } ${id}-form-step form-step}
-                        key={form-${index}}
+                  } ${id}-form-step form-step"
+                        key="form-${index}"
                     >
-                        <div className="d-flex justify-between items-center">
-                            <h2 className="font-normal">
+                        <div class="flex justify-between items-center">
+                            <h2 class="font-normal">
                               Instant Shipping Quote <br /> Calculator
                             </h2>
-                            <span className="form-stepper-circle">
+                            <span class="form-stepper-circle">
                               <span>
                                 ${index + 1} / ${formProps.steps.length}
                               </span>
                             </span>
                         </div>
-                        <div className={${
-                          componentsStyles?.sectionHeight
-                        } mt-3}>
+                        <div class="${componentsStyles?.sectionHeight} mt-3">
                             ${stepForm.map(
                               (input, index) => `
-                                <div key={${input.name}-${index}}>
-                                    <label>${input.field}</label>
+                                <div key="${input.name}-${index}">
+                                    <label class="block">${input.field}</label>
                                     <input
-                                      className={${
+                                      class="${
                                         componentsStyles.placeholcerColor
-                                      }}
-                                      placeholder={${input.placeholder}}
-                                      name={${input.name}}
-                                      {${{ ...input.validations }}}
+                                      }"
+                                      placeholder="${input.placeholder}"
+                                      name="${input.name}"
+                                      ${{ ...input.validations }}
                                     />
                                 </div>
                                 `
                             )}
                         </div>
-                        <div className="mt-3">
-                            <div className="d-flex justify-end">
+                        <div class="mt-3">
+                            <div class="flex justify-end">
                                 <button
-                                    className={${componentsStyles.buttonBg} ${
+                                    class="${componentsStyles.buttonBg} ${
                     componentsStyles.buttonColor
-                  } button btn-navigate-form-step}
+                  } button btn-navigate-form-step"
                                     type="button"
-                                    step_number={${index + 1}}
-                                    onClick={${(e) => onFormNext(e, id)}}
+                                    step_number="${index + 1}"
+                                    onclick="${(e) => onFormNext(e, id)}"
 
                                 >
                                     Next
