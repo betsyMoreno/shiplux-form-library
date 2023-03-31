@@ -33,7 +33,7 @@ const renderForm = (id, formProps) => {
                         className={${componentsStyles.width} ${
                     componentsStyles.height
                   } ${componentsStyles.formBg} ${componentsStyles.formColor} ${
-                    index !== 0 && "d-none"
+                    index !== 0 && "hidden"
                   } ${id}-form-step form-step}
                         key={form-${index}}
                     >
@@ -63,7 +63,7 @@ const renderForm = (id, formProps) => {
                                       {${{ ...input.validations }}}
                                     />
                                 </div>
-                            `
+                                `
                             )}
                         </div>
                         <div className="mt-3">
@@ -74,6 +74,8 @@ const renderForm = (id, formProps) => {
                   } button btn-navigate-form-step}
                                     type="button"
                                     step_number={${index + 1}}
+                                    onClick={(e) => ${onFormNext(e, id)}}
+
                                 >
                                     Next
                                 </button>
@@ -87,6 +89,38 @@ const renderForm = (id, formProps) => {
    </div>
   `;
 };
+
+function onFormNext(formNavigationBtn, id) {
+  const stepNumber = parseInt(
+    formNavigationBtn.target.getAttribute("step_number")
+  );
+
+  navigateToFormStep(stepNumber + 1, id);
+}
+
+function navigateToFormStep(stepNumber, id) {
+  if (
+    Array.from(document.querySelectorAll(`.${id}-form-step`)).length ===
+    stepNumber - 1
+  ) {
+    return;
+  }
+
+  /**
+   * Hide all form steps.
+   */
+  document.querySelectorAll(`.${id}-form-step`).forEach((formStepElement) => {
+    formStepElement.classList.add("hidden");
+  });
+
+  /**
+   * Show next form step
+   */
+  document
+    .querySelector(`#step-${id}-` + stepNumber)
+    .classList.remove("hidden");
+}
+
 export default {
   renderForm,
 };
