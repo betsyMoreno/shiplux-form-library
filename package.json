@@ -1,6 +1,6 @@
 {
   "name": "shiplux-form-library",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library to create a shiplux form faster ",
   "main": "index.js",
   "scripts": {
