@@ -86,11 +86,12 @@ const renderForm = (id, formProps) => {
         </div
    </div>
   `;
-};
+  const nextButton = document.getElementById("onNextButton");
 
-document
-  .getElementById("onNextButton")
-  .addEventListener(("click", onFormNext()));
+  if (nextButton) {
+    nextButton.addEventListener(("click", (e) => onFormNext(e, id)));
+  }
+};
 
 function onFormNext(formNavigationBtn, id) {
   const stepNumber = parseInt(
