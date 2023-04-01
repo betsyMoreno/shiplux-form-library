@@ -89,11 +89,16 @@ const renderForm = (id, formProps) => {
   const nextButton = document.getElementById("onNextButton");
 
   if (nextButton) {
-    nextButton.addEventListener(("click", (e) => onFormNext(e, id)));
+    nextButton.addEventListener("click", function (event) {
+      onFormNext(event, id);
+    });
   }
 };
 
 function onFormNext(formNavigationBtn, id) {
+  if (!formNavigationBtn) {
+    formNavigationBtn = window.event;
+  }
   const stepNumber = parseInt(
     formNavigationBtn.target.getAttribute("step_number")
   );
