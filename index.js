@@ -1,4 +1,4 @@
-const renderForm = (id, formProps) => {
+renderForm = (id, formProps) => {
   const root = document.getElementById(id);
 
   const componentsStyles = {
@@ -27,15 +27,15 @@ const renderForm = (id, formProps) => {
                 encType="multipart/form-data"
             >
                 ${formProps.steps.map(
-                  (stepForm, index) => `
+                  (stepForm, index) => 
                     <section
                         id="step-${id}-${index + 1}"
-                        class="${componentsStyles.width} ${
+                        class={`${componentsStyles.width} ${
                     componentsStyles.height
                   } ${componentsStyles.formBg} ${componentsStyles.formColor} ${
                     index !== 0 && "hidden"
-                  } ${id}-form-step form-step"
-                        key="form-${index}"
+                  } ${id}-form-step form-step`}
+                        key={`form-${index}`}
                     >
                         <div class="flex justify-between items-center">
                             <h2 class="font-normal">
@@ -43,25 +43,25 @@ const renderForm = (id, formProps) => {
                             </h2>
                             <span class="form-stepper-circle">
                               <span>
-                                ${index + 1} / ${formProps.steps.length}
+                                {index + 1} / {formProps.steps.length}
                               </span>
                             </span>
                         </div>
                         <div class="${componentsStyles?.sectionHeight} mt-3">
                             ${stepForm.map(
-                              (input, index) => `
-                                <div key="${input.name}-${index}">
-                                    <label class="block">${input.field}</label>
+                              (input, index) => 
+                                <div key={`${input.name}-${index}`}>
+                                    <label class="block">{input.field}</label>
                                     <input
-                                      class="${
+                                      class={`${
                                         componentsStyles.placeholcerColor
-                                      }"
-                                      placeholder="${input.placeholder}"
-                                      name="${input.name}"
-                                      ${{ ...input.validations }}
-                                    />
+                                      }`}
+                                      placeholder={`${input.placeholder}`}
+                                      name={`${input.name}`}
+                                      { ...input.validations }
+                                    />‰
                                 </div>
-                                `
+                                
                             )}
                         </div>
                         <div class="mt-3">
@@ -72,7 +72,7 @@ const renderForm = (id, formProps) => {
                   } button btn-navigate-form-step"
                                     type="button"
                                     step_number="${index + 1}"
-                                    onclick="${(e) => onFormNext(e, id)}"
+                                    onclick={`${(e) => onFormNext(e, id)}`}
 
                                 >
                                     Next
@@ -80,7 +80,7 @@ const renderForm = (id, formProps) => {
                             </div>
                         </div>
                     </section>
-                `
+                
                 )}
             </form>
         </div
