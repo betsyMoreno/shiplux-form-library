@@ -1,6 +1,92 @@
-const renderForm = (id, formProps) => {
-  const root = document.getElementById(id);
+const React = window.React;
+const ReactDOM = window.ReactDOM;
 
+window.Form = function ({ formProps, id, componentsStyles }) {
+  const handleClick = (e) => {
+    const stepNumber = parseInt(e.target.getAttribute("step_number"));
+
+    navigateToFormStep(stepNumber + 1, id);
+  };
+
+  function navigateToFormStep(stepNumber) {
+    if (
+      Array.from(document.querySelectorAll(`.${id}-form-step`)).length ===
+      stepNumber - 1
+    ) {
+      return;
+    }
+
+    /**
+     * Hide all form steps.
+     */
+    document.querySelectorAll(`.${id}-form-step`).forEach((formStepElement) => {
+      formStepElement.classList.add("hidden");
+    });
+
+    /**
+     * Show next form step
+     */
+    document
+      .querySelector(`#step-${id}-${stepNumber}`)
+      .classList.remove("hidden");
+  }
+
+  return (
+    <>
+      <form>
+        {formProps.steps.map((stepForm, index) => (
+          <section
+            id={`step-${id}-${index + 1}`}
+            className={`${componentsStyles.width} ${componentsStyles.height} ${
+              componentsStyles.formBg
+            } ${componentsStyles.formColor} ${
+              index !== 0 && "hidden"
+            } ${id}-form-step form-step`}
+            key={`form-${index}`}
+          >
+            <div class="flex justify-between items-center">
+              <h2 class="font-normal">
+                Instant Shipping Quote <br /> Calculator
+              </h2>
+              <span class="form-stepper-circle">
+                <span>
+                  {index + 1} / {formProps.steps.length}
+                </span>
+              </span>
+            </div>
+            <div className={`${componentsStyles?.sectionHeight} mt-3`}>
+              {stepForm.map((input, index) => (
+                <div key={`${input.name}-${index}`}>
+                  <label className="block">{input.field}</label>
+                  <input
+                    className={`${componentsStyles.placeholcerColor}`}
+                    placeholder={`${input.placeholder}`}
+                    name={`${input.name}`}
+                    {...input.validations}
+                  />
+                </div>
+              ))}
+            </div>
+            <div class="mt-3">
+              <div class="flex justify-end">
+                <button
+                  className={`${componentsStyles.buttonBg} ${componentsStyles.buttonColor} button btn-navigate-form-step`}
+                  type="button"
+                  step_number={`${index + 1}`}
+                  onClick={handleClick}
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </section>
+        ))}
+      </form>
+    </>
+  );
+};
+
+window.renderForm = function (formProps, id) {
   const componentsStyles = {
     placeholcerColor: `placeholder:text-[${formProps?.placeholder_color}]`,
     formBg: `bg-[${formProps?.background}]`,
@@ -18,117 +104,12 @@ const renderForm = (id, formProps) => {
     }px]`,
   };
 
-  root.innerHTML = `
-   <div>
-        <div id="multi-step-form-container">
-            <form
-                id="userAccountSetupForm"
-                name="userAccountSetupForm"
-                encType="multipart/form-data"
-            >
-                ${formProps.steps.map((stepForm, index) => {
-                  return `
-                    <section
-                        id="step-${id}-${index + 1}"
-                        class="${componentsStyles.width} ${
-                    componentsStyles.height
-                  } ${componentsStyles.formBg} ${componentsStyles.formColor} ${
-                    index !== 0 && "hidden"
-                  } ${id}-form-step form-step"
-                        key="form-${index}"
-                    >
-                        <div class="flex justify-between items-center">
-                            <h2 class="font-normal">
-                              Instant Shipping Quote <br /> Calculator
-                            </h2>
-                            <span class="form-stepper-circle">
-                              <span>
-                                ${index + 1} / ${formProps.steps.length}
-                              </span>
-                            </span>
-                        </div>
-                        <div class="${componentsStyles?.sectionHeight} mt-3">
-                            ${stepForm.map((input, index) => {
-                              return `
-                                <div key="${input.name}-${index}">
-                                    <label class="block">${input.field}</label>
-                                    <input
-                                      class="${
-                                        componentsStyles.placeholcerColor
-                                      }"
-                                      placeholder="${input.placeholder}"
-                                      name="${input.name}"
-                                      ${{ ...input.validations }}
-                                    />
-                                </div>
-                                `;
-                            })}
-                        </div>
-                        <div class="mt-3">
-                            <div class="flex justify-end">
-                                <button
-                                    class="${componentsStyles.buttonBg} ${
-                    componentsStyles.buttonColor
-                  } button btn-navigate-form-step"
-                                    type="button"
-                                    step_number="${index + 1}"
-                                    id="onNextButton"
-
-                                >
-                                    Next
-                                </button>
-                            </div>
-                        </div>
-                    </section>
-                `;
-                })}
-            </form>
-        </div
-   </div>
-  `;
-  const nextButton = document.getElementById("onNextButton");
-
-  if (nextButton) {
-    nextButton.addEventListener("click", function (event) {
-      onFormNext(event, id);
-    });
-  }
-};
-
-function onFormNext(formNavigationBtn, id) {
-  if (!formNavigationBtn) {
-    formNavigationBtn = window.event;
-  }
-  const stepNumber = parseInt(
-    formNavigationBtn.target.getAttribute("step_number")
+  const root = ReactDOM.createRoot(document.getElementById("form-basic"));
+  root.render(
+    <window.Form
+      formProps={formProps}
+      id={id}
+      componentsStyles={componentsStyles}
+    />
   );
-
-  navigateToFormStep(stepNumber + 1, id);
-}
-
-function navigateToFormStep(stepNumber, id) {
-  if (
-    Array.from(document.querySelectorAll(`.${id}-form-step`)).length ===
-    stepNumber - 1
-  ) {
-    return;
-  }
-
-  /**
-   * Hide all form steps.
-   */
-  document.querySelectorAll(`.${id}-form-step`).forEach((formStepElement) => {
-    formStepElement.classList.add("hidden");
-  });
-
-  /**
-   * Show next form step
-   */
-  document
-    .querySelector(`#step-${id}-` + stepNumber)
-    .classList.remove("hidden");
-}
-
-export default {
-  renderForm,
 };
