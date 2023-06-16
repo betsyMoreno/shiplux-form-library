@@ -128,9 +128,9 @@ So in your Head HTML you will need:
    |   required   |       boolean      |     Yes    |
    |      min     |        number      |     Yes    |
    |      max     |        number      |     Yes    |
-   
 
-    ### Location
+   
+  ### Location
     
     |      Name     |        Type        |  Optional  |
     | ------------- |   --------------   |  --------- | 
