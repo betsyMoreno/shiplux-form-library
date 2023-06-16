@@ -132,10 +132,10 @@ So in your Head HTML you will need:
    
   ### Location
     
-    |      Name     |        Type        |  Optional  |
-    | ------------- |   --------------   |  --------- | 
-    | cityZipLookup |       boolean      |     Yes    |
-    |  autoComplete |       boolean      |     Yes    |
+  |      Name     |        Type        |  Optional  |
+  | ------------- |   --------------   |  --------- | 
+  | cityZipLookup |       boolean      |     Yes    |
+  |  autoComplete |       boolean      |     Yes    |
     
  
 
