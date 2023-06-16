@@ -86,31 +86,49 @@ So in your Head HTML you will need:
   ],
 };
 ```
-  ## API:
-  background?: string
+## API:
+
+  ### Form
   
-  color?: string
-  
-  title?: string
-  
-  width: number
-  
-  height: number
-  
-  steps: [
-    [
-      {
-        label: string,
-        placeholder?: string,
-        name: string,
-        validations?: { 
-          required?: boolean,
-          min?: number,
-          max?: number,
-        },
-      }
-    ],
-  ],
+  |    Name    |     Type     |  Optional  |
+  | ---------- |   ---------  |  --------- | 
+  | background |    string    |     Yes    |
+  |   color    |    string    |     Yes    |
+  |   title    |    string    |     Yes    |
+  |   width    |    number    |     Yes    |
+  |   height   |    number    |     Yes    |
+  |   steps    | Array<[Input](#Input)> |     No     |
+
+   ### Input
+   
+   |    Name     |        Type        |  Optional  |
+   |    label    |       string       |     Yes    |
+   | placeholder |       string       |     Yes    |
+   |    name     |       string       |     No     |
+   |  Location   |  Object<[Location](#Location)>  |     No     |
+   |   select    |       boolean      |     Yes    |
+   |   options   |    Array<[Option](#Option)>   |     Yes    |
+   | validations | Object<[Validation](#Validation)> |     Yes    |
+
+   ### Option
+
+   |    Name      |        Type        |  Optional  |
+   |    label     |       string       |     No     |
+   |    Value     |   string | number  |     No     |
+   | defaultValue |   string | number  |     Yes    |
+
+   ### Validation
+
+   |     Name     |        Type        |  Optional  |
+   |   required   |       boolean      |     Yes    |
+   |      min     |        number      |     Yes    |
+   |      max     |        number      |     Yes    |
+
+    ### Location
+    |      Name     |        Type        |  Optional  |
+    | cityZipLookup |       boolean      |     Yes    |
+    |  autoComplete |       boolean      |     Yes    |
+    
  
 
   
