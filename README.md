@@ -101,31 +101,39 @@ So in your Head HTML you will need:
 
    ### Input
    
-   |    Name     |        Type        |  Optional  |
-   |    label    |       string       |     Yes    |
-   | placeholder |       string       |     Yes    |
-   |    name     |       string       |     No     |
+   |    Name     |               Type              |  Optional  |
+   | ----------- |   ----------------------------  |  --------- | 
+   |    label    |       string                    |     Yes    |
+   | placeholder |       string                    |     Yes    |
+   |    name     |       string                    |     No     |
    |  Location   |  Object<[Location](#Location)>  |     No     |
-   |   select    |       boolean      |     Yes    |
-   |   options   |    Array<[Option](#Option)>   |     Yes    |
-   | validations | Object<[Validation](#Validation)> |     Yes    |
+   |   select    |       boolean                   |     Yes    |
+   |   options   |    Array<[Option](#Option)>     |     Yes    |
+   | validations |Object<[Validation](#Validation)>|     Yes    |
+   
 
    ### Option
 
    |    Name      |        Type        |  Optional  |
+   | ------------ |   ---------------  |  --------- | 
    |    label     |       string       |     No     |
    |    Value     |   string | number  |     No     |
    | defaultValue |   string | number  |     Yes    |
+   
 
    ### Validation
 
    |     Name     |        Type        |  Optional  |
+   | ------------ |   --------------   |  --------- | 
    |   required   |       boolean      |     Yes    |
    |      min     |        number      |     Yes    |
    |      max     |        number      |     Yes    |
+   
 
     ### Location
+    
     |      Name     |        Type        |  Optional  |
+    | ------------- |   --------------   |  --------- | 
     | cityZipLookup |       boolean      |     Yes    |
     |  autoComplete |       boolean      |     Yes    |
     
