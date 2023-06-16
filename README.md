@@ -1,4 +1,9 @@
 # shiplux-form-library
+ * [Tutorial](##Tutorial);
+ * [Example](##Example) 
+ * [API](##API)
+  
+## Tutorial
 a library to do forms faster
 
 This CDN works with the react, tailwind and Babel CDN.
@@ -36,7 +41,7 @@ So in your Head HTML you will need:
   ```
   You will need the form props to create the form. this is an example:
   
-  # Example
+  ## Example
   ```ruby
   const formProps = {
   background: "",
@@ -81,7 +86,7 @@ So in your Head HTML you will need:
   ],
 };
 ```
-  # API:
+  ## API:
   background?: string
   
   color?: string
