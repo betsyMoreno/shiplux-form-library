@@ -4,6 +4,7 @@ a library to do forms faster
 This CDN works with the react, tailwind and Babel CDN.
 
 So in your Head HTML you will need: 
+```ruby
  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -17,24 +18,26 @@ So in your Head HTML you will need:
     src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
   ></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  
+  ```
+
   And in place that you want your form paste this: 
-  
+  ```ruby
   <div id="shiplux-form"></div>
-  
+  ```
   The ID can be whatever you want.
   
   Then, create an js file, for example: 
+  ```ruby
   <script type="text/babel" src="./js/index.js" crossorigin></script>
-  
+  ```
   And call the windows function to create the form:
-  
+  ```ruby
   const state = window.renderForm(formProps, "shiplux-form");
-  
+  ```
   You will need the form props to create the form. this is an example:
   
   # Example
-  
+  ```ruby
   const formProps = {
   background: "",
   color: "",
@@ -77,7 +80,7 @@ So in your Head HTML you will need:
     ],
   ],
 };
-  
+```
   # API:
   background?: string
   
