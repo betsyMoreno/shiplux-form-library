@@ -1,7 +1,7 @@
 # shiplux-form-library
- * [Tutorial](##Tutorial);
- * [Example](##Example) 
- * [API](##API)
+ * [Tutorial](#Tutorial)
+ * [Example](#Example) 
+ * [API](#API)
   
 ## Tutorial
 a library to do forms faster
