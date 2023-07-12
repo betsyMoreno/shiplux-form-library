@@ -149,7 +149,7 @@ window.Form = function ({ formProps, id, componentsStyles }) {
   }
 
   function setInputValid(input) {
-    console.log(input, "input");
+    // console.log(input, "input");
     if (!input.checkValidity()) {
       return setErrors((prev) => {
         return { ...prev, [input.name]: input.validationMessage };
