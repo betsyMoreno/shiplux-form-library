@@ -1,7 +1,7 @@
 const React = window.React;
 const ReactDOM = window.ReactDOM;
 
-const url = "http://localhost:3000";
+const url = "https://web-server-v2-central1-unptqwe5da-uc.a.run.app/";
 
 window.Form = function ({ formProps, id, componentsStyles }) {
   const [errors, setErrors] = React.useState({});
